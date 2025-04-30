@@ -1,23 +1,61 @@
-/* Add any additional style as necessary*/
-  
+/* ==============================================================
+   Fake Airbnb – custom stylesheet
+   Combines original student styles with ChatGPT layout fixes
+   ============================================================== */
+
+/* ---------- Global tweaks ------------------------------------ */
+body {
+  scroll-padding-top: 4rem;   /* prevents anchor jump under fixed navbar */
+}
+
+/* ---------- Card grid ---------------------------------------- */
+.card img {                     /* your original rule */
+  width: 100%;
+  aspect-ratio: 1 / 1;        /* keeps card thumbnails square */
+  object-fit: cover;
+}
+
+/* keep higher-resolution aspect for Bootstrap card-img-top */
+.card-img-top {                 /* added rule, only affects Bootstrap cards */
+  height: 200px;
+  object-fit: cover;
+}
+
+/* ---------- “View” button cursor ----------------------------- */
+.viewListing { cursor: pointer; }
+
+/* ---------- Modal body & image ------------------------------- */
+/* your original flex layout, now forced to vertical column */
 .modal-body {
-    display: flex;
-  }
-  
+  display: flex;
+  flex-direction: column;     /* ensures text drops below hero image */
+  line-height: 1.4;
+}
 
+/* make the hero image span full width */
+#modalImage,
+#modal-img img {                /* supports both id styles */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;             /* clears any inline/flex alignment issues */
+  float: none;                /* safety override */
+  margin-bottom: 1rem;
+}
 
-  .modal-footer{
-    display:block;
-  }
+/* ---------- Meta & amenities blocks -------------------------- */
+#modalMeta > div {
+  font-weight: 500;
+}
 
-  .card img {
-    width: 100%;
+#modalAmenities {
+  max-height: 8rem;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
 
-    aspect-ratio: 1 / 1; /* Keeps it square */
-    object-fit: cover;
-    /*margin: auto;*/
-  }
-
-  #modal-img img{
-    width: 100%
-  }
+/* ---------- Modal footer ------------------------------------- */
+.modal-footer {                 /* your original rule */
+  display: block;
+}
